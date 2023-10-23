@@ -1,0 +1,570 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Rougamo</name>
+    </assembly>
+    <members>
+        <member name="T:Rougamo.AccessFlags">
+            <summary>
+            accessable flags
+            </summary>
+        </member>
+        <member name="F:Rougamo.AccessFlags.Static">
+            <summary>
+            Static
+            </summary>
+        </member>
+        <member name="F:Rougamo.AccessFlags.Instance">
+            <summary>
+            Instance
+            </summary>
+        </member>
+        <member name="F:Rougamo.AccessFlags.Public">
+            <summary>
+            Public
+            </summary>
+        </member>
+        <member name="F:Rougamo.AccessFlags.NonPublic">
+            <summary>
+            NonPublic
+            </summary>
+        </member>
+        <member name="F:Rougamo.AccessFlags.StaticPublic">
+            <summary>
+            Static and Public
+            </summary>
+        </member>
+        <member name="F:Rougamo.AccessFlags.StaticNonPublic">
+            <summary>
+            Static and NonPublic
+            </summary>
+        </member>
+        <member name="F:Rougamo.AccessFlags.InstancePublic">
+            <summary>
+            Instance and Public (default)
+            </summary>
+        </member>
+        <member name="F:Rougamo.AccessFlags.InstanceNonPublic">
+            <summary>
+            Instance and NonPublic
+            </summary>
+        </member>
+        <member name="F:Rougamo.AccessFlags.All">
+            <summary>
+            Static and instance, public and nonpublic
+            </summary>
+        </member>
+        <member name="F:Rougamo.AccessFlags.Method">
+            <summary>
+            Method only(except property get set methods)
+            </summary>
+        </member>
+        <member name="F:Rougamo.AccessFlags.PropertyGetter">
+            <summary>
+            Property getter only
+            </summary>
+        </member>
+        <member name="F:Rougamo.AccessFlags.PropertySetter">
+            <summary>
+            Property setter only
+            </summary>
+        </member>
+        <member name="F:Rougamo.AccessFlags.Property">
+            <summary>
+            Property getter and setter
+            </summary>
+        </member>
+        <member name="F:Rougamo.AccessFlags.Constructor">
+            <summary>
+            constructor
+            </summary>
+        </member>
+        <member name="T:Rougamo.Context.MethodContext">
+            <summary>
+            Method execution context
+            </summary>
+        </member>
+        <member name="M:Rougamo.Context.MethodContext.#ctor(System.Object,System.Type,System.Reflection.MethodBase,System.Boolean,System.Boolean,System.Object[])">
+            <summary>
+            Compatibility with versions prior to 1.2.0
+            </summary>
+        </member>
+        <member name="M:Rougamo.Context.MethodContext.#ctor(System.Object,System.Type,System.Reflection.MethodBase,System.Boolean,System.Boolean,System.Boolean,Rougamo.IMo[],System.Object[])">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:Rougamo.Context.MethodContext.ExMode">
+            <summary>
+            When exmode is true, the return value type needs to match <see cref="P:Rougamo.Context.MethodContext.ExReturnType"/>, otherwise it matches <see cref="P:Rougamo.Context.MethodContext.RealReturnType"/>.
+            </summary>
+        </member>
+        <member name="P:Rougamo.Context.MethodContext.ExContinueOnce">
+            <summary>
+            ContinueWith executes only once.
+            </summary>
+        </member>
+        <member name="P:Rougamo.Context.MethodContext.Mos">
+            <summary>
+            Array of IMos to which the current method applies.
+            </summary>
+        </member>
+        <member name="P:Rougamo.Context.MethodContext.MosNonEntryFIFO">
+            <summary>
+            Whether the execution order of multiple IMo non-OnEntry methods is consistent with OnEntry, the default false indicates that the execution order is opposite to OnEntry.
+            </summary>
+        </member>
+        <member name="P:Rougamo.Context.MethodContext.Data">
+            <summary>
+            user defined state data
+            </summary>
+        </member>
+        <member name="P:Rougamo.Context.MethodContext.Datas">
+            <summary>
+            user defined state datas
+            </summary>
+        </member>
+        <member name="P:Rougamo.Context.MethodContext.Target">
+            <summary>
+            Method' declaring type instance, null if method is a static method
+            </summary>
+        </member>
+        <member name="P:Rougamo.Context.MethodContext.TargetType">
+            <summary>
+            Method' declaring type
+            </summary>
+        </member>
+        <member name="P:Rougamo.Context.MethodContext.Arguments">
+            <summary>
+            Method arguments
+            </summary>
+        </member>
+        <member name="P:Rougamo.Context.MethodContext.RewriteArguments">
+            <summary>
+            When set to true, <see cref="P:Rougamo.Context.MethodContext.Arguments"/> will rewrite method parameter values after <see cref="M:Rougamo.IMo.OnEntry(Rougamo.Context.MethodContext)"/> is executed
+            </summary>
+        </member>
+        <member name="P:Rougamo.Context.MethodContext.Method">
+            <summary>
+            Method info
+            </summary>
+        </member>
+        <member name="P:Rougamo.Context.MethodContext.IsAsync">
+            <summary>
+            Is method run in async
+            </summary>
+        </member>
+        <member name="P:Rougamo.Context.MethodContext.IsIterator">
+            <summary>
+            return true if method use yield return syntax
+            </summary>
+        </member>
+        <member name="P:Rougamo.Context.MethodContext.ReturnType">
+            <summary>
+            Method decleard return type, return <see cref="T:System.Threading.Tasks.Task"/>/<see cref="T:System.Threading.Tasks.Task`1"/>/<see cref="T:System.Threading.Tasks.ValueTask"/>/<see cref="T:System.Threading.Tasks.ValueTask`1"/> even if method run in async
+            </summary>
+        </member>
+        <member name="P:Rougamo.Context.MethodContext.RealReturnType">
+            <summary>
+            Method real return type, return first generic argument if current method is an async <see cref="T:System.Threading.Tasks.Task`1"/>/<see cref="T:System.Threading.Tasks.ValueTask`1"/> method, 
+            or return typeof(void) if method is an async <see cref="T:System.Threading.Tasks.Task"/>/<see cref="T:System.Threading.Tasks.ValueTask"/> method
+            </summary>
+        </member>
+        <member name="P:Rougamo.Context.MethodContext.ExReturnType">
+            <summary>
+            <see cref="T:System.Threading.Tasks.Task"/> and <see cref="T:System.Threading.Tasks.ValueTask"/> return typeof(void), and <see cref="T:System.Threading.Tasks.Task`1"/> and <see cref="T:System.Threading.Tasks.ValueTask`1"/> return typeof(T),
+            whether or not the async syntax is used. Others return the actual method return value type.
+            </summary>
+        </member>
+        <member name="P:Rougamo.Context.MethodContext.HasReturnValue">
+            <summary>
+            Return true if return value type is not void
+            </summary>
+        </member>
+        <member name="P:Rougamo.Context.MethodContext.ReturnValue">
+            <summary>
+            Method return value, if you want to assign a value to it, you'd better use <see cref="M:Rougamo.Context.MethodContext.HandledException(Rougamo.IMo,System.Object)"/> or <see cref="M:Rougamo.Context.MethodContext.ReplaceReturnValue(Rougamo.IMo,System.Object)"/>, 
+            the type of this value is equals to <see cref="P:Rougamo.Context.MethodContext.RealReturnType"/>
+            </summary>
+        </member>
+        <member name="P:Rougamo.Context.MethodContext.ReturnValueReplaced">
+            <summary>
+            Return true if return value has been replaced
+            </summary>
+        </member>
+        <member name="P:Rougamo.Context.MethodContext.ReturnValueModifier">
+            <summary>
+            When multiple <see cref="T:Rougamo.IMo"/> applied to the method, you will know who replace the return value
+            </summary>
+        </member>
+        <member name="P:Rougamo.Context.MethodContext.ExReturnValue">
+            <summary>
+            The return value set by <see cref="T:Rougamo.ExMoAttribute"/>, the type of this value is equals to <see cref="P:Rougamo.Context.MethodContext.ExReturnType"/>
+            </summary>
+        </member>
+        <member name="P:Rougamo.Context.MethodContext.ExReturnValueReplaced">
+            <summary>
+            Is <see cref="P:Rougamo.Context.MethodContext.ExReturnValue"/> has been set
+            </summary>
+        </member>
+        <member name="P:Rougamo.Context.MethodContext.Exception">
+            <summary>
+            Exception throws by method, if you want to prevent exception, you'd better use <see cref="M:Rougamo.Context.MethodContext.HandledException(Rougamo.IMo,System.Object)"/>
+            </summary>
+        </member>
+        <member name="P:Rougamo.Context.MethodContext.HasException">
+            <summary>
+            Is there a unhandled exception
+            </summary>
+        </member>
+        <member name="P:Rougamo.Context.MethodContext.ExceptionHandled">
+            <summary>
+            Return true if exception has been handled
+            </summary>
+        </member>
+        <member name="P:Rougamo.Context.MethodContext.ExceptionHandler">
+            <summary>
+            when multiple <see cref="T:Rougamo.IMo"/> applied to the method, you will know who handled the exception
+            </summary>
+        </member>
+        <member name="P:Rougamo.Context.MethodContext.RetryCount">
+            <summary>
+            This property will be checked after <see cref="M:Rougamo.MoAttribute.OnSuccess(Rougamo.Context.MethodContext)"/> and <see cref="M:Rougamo.MoAttribute.OnException(Rougamo.Context.MethodContext)"/>,
+            and the method will be re-executed when the value is greater than 0 (skipping the OnEntry method execution).
+            </summary>
+        </member>
+        <member name="M:Rougamo.Context.MethodContext.HandledException(Rougamo.IMo,System.Object)">
+            <summary>
+            Prevent exception thrown by the method and set the return value.
+            If the return type is void, <paramref name="returnValue"/> is ignored.
+            <see cref="P:Rougamo.Context.MethodContext.ExceptionHandled"/> and <see cref="P:Rougamo.Context.MethodContext.ReturnValueReplaced"/> will be set to true
+            </summary>
+        </member>
+        <member name="M:Rougamo.Context.MethodContext.ReplaceReturnValue(Rougamo.IMo,System.Object)">
+            <summary>
+            Replace return value, if the return type is void, <paramref name="returnValue"/> is ignored.
+            <see cref="P:Rougamo.Context.MethodContext.ReturnValueReplaced"/> will be set to true
+            </summary>
+        </member>
+        <member name="M:Rougamo.Context.MethodContext.ReplaceReturnValue(Rougamo.IMo,System.Object,System.Boolean)">
+            <summary>
+            Replace return value, if the return type is void, <paramref name="returnValue"/> is ignored.
+            <see cref="P:Rougamo.Context.MethodContext.ReturnValueReplaced"/> will be set to true
+            </summary>
+        </member>
+        <member name="T:Rougamo.ExMoAttribute">
+            <summary>
+            For methods whose return value is <see cref="T:System.Threading.Tasks.Task"/>/<see cref="T:System.Threading.Tasks.Task`1"/>/<see cref="T:System.Threading.Tasks.ValueTask"/>/<see cref="T:System.Threading.Tasks.ValueTask`1"/>,
+            no matter whether async syntax is used or not, when using <see cref="M:Rougamo.Context.MethodContext.ReplaceReturnValue(Rougamo.IMo,System.Object)"/> to modify/set the
+            return value or when using <see cref="M:Rougamo.Context.MethodContext.HandledException(Rougamo.IMo,System.Object)"/> to handle exceptions and set the return value, you
+            can directly set the return value according to the return value type when using the async syntax.<br/>
+            At the same time, the return value type in <see cref="T:Rougamo.ExMoAttribute"/> can be obtained through <see cref="P:Rougamo.Context.MethodContext.ExReturnType"/>.<br/>
+            For example:
+            <code>
+            // When using <see cref="M:Rougamo.Context.MethodContext.ReplaceReturnValue(Rougamo.IMo,System.Object)"/> to modify method M1's return value, the return value type should be string.
+            // <see cref="P:Rougamo.Context.MethodContext.ReturnType"/> = typeof(string)
+            // <see cref="P:Rougamo.Context.MethodContext.RealReturnType"/> = typeof(string)
+            // <see cref="P:Rougamo.Context.MethodContext.ExReturnType"/> = typeof(string)
+            public string M1();
+            
+            // When using <see cref="M:Rougamo.Context.MethodContext.ReplaceReturnValue(Rougamo.IMo,System.Object)"/> to modify method M2's return value, the return value type should be int.
+            // <see cref="P:Rougamo.Context.MethodContext.ReturnType"/> = typeof(Task&lt;int&gt;)
+            // <see cref="P:Rougamo.Context.MethodContext.RealReturnType"/> = typeof(string)
+            // <see cref="P:Rougamo.Context.MethodContext.ExReturnType"/> = typeof(string)
+            public async Task&lt;int&gt; M2();
+            
+            // When using <see cref="M:Rougamo.Context.MethodContext.ReplaceReturnValue(Rougamo.IMo,System.Object)"/> to modify method M3's return value, the return value type is also double.
+            // This is different from <see cref="T:Rougamo.MoAttribute"/>, the return value type of M3 should be Task&lt;double&gt; when MoAttribute does not use async syntax.
+            // <see cref="P:Rougamo.Context.MethodContext.ReturnType"/> = typeof(Task&lt;double&gt;)
+            // <see cref="P:Rougamo.Context.MethodContext.RealReturnType"/> = typeof(Task&lt;double&gt;)
+            // <see cref="P:Rougamo.Context.MethodContext.ExReturnType"/> = typeof(string)
+            public Task&lt;double&gt; M3();
+            </code>
+            </summary>
+        </member>
+        <member name="M:Rougamo.ExMoAttribute.ExOnEntry(Rougamo.Context.MethodContext)">
+            <summary>
+            <inheritdoc cref="M:Rougamo.MoAttribute.OnEntry(Rougamo.Context.MethodContext)"/>
+            </summary>
+        </member>
+        <member name="M:Rougamo.ExMoAttribute.ExOnException(Rougamo.Context.MethodContext)">
+            <summary>
+            <inheritdoc cref="M:Rougamo.MoAttribute.OnException(Rougamo.Context.MethodContext)"/>
+            </summary>
+        </member>
+        <member name="M:Rougamo.ExMoAttribute.ExOnSuccess(Rougamo.Context.MethodContext)">
+            <summary>
+            <inheritdoc cref="M:Rougamo.MoAttribute.OnSuccess(Rougamo.Context.MethodContext)"/>
+            </summary>
+        </member>
+        <member name="M:Rougamo.ExMoAttribute.ExOnExit(Rougamo.Context.MethodContext)">
+            <summary>
+            <inheritdoc cref="M:Rougamo.MoAttribute.OnExit(Rougamo.Context.MethodContext)"/>
+            </summary>
+        </member>
+        <member name="M:Rougamo.ExMoAttribute.OnEntry(Rougamo.Context.MethodContext)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="M:Rougamo.ExMoAttribute.OnException(Rougamo.Context.MethodContext)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="M:Rougamo.ExMoAttribute.OnSuccess(Rougamo.Context.MethodContext)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="M:Rougamo.ExMoAttribute.OnExit(Rougamo.Context.MethodContext)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="T:Rougamo.Feature">
+            <summary>
+            </summary>
+        </member>
+        <member name="F:Rougamo.Feature.OnEntry">
+            <summary>
+            OnEntry
+            </summary>
+        </member>
+        <member name="F:Rougamo.Feature.OnException">
+            <summary>
+            OnException
+            </summary>
+        </member>
+        <member name="F:Rougamo.Feature.OnSuccess">
+            <summary>
+            OnSuccess
+            </summary>
+        </member>
+        <member name="F:Rougamo.Feature.OnExit">
+            <summary>
+            OnExit
+            </summary>
+        </member>
+        <member name="F:Rougamo.Feature.RewriteArgs">
+            <summary>
+            OnEntry and RewriteArgument
+            </summary>
+        </member>
+        <member name="F:Rougamo.Feature.EntryReplace">
+            <summary>
+            OnEntry and return early with replaced return value
+            </summary>
+        </member>
+        <member name="F:Rougamo.Feature.RetryAny">
+            <summary>
+            ExceptionRetry or SuccessRetry, you shouldn't use it in your code
+            </summary>
+        </member>
+        <member name="F:Rougamo.Feature.ExceptionRetry">
+            <summary>
+            OnException and re-execute method if retry
+            </summary>
+        </member>
+        <member name="F:Rougamo.Feature.SuccessRetry">
+            <summary>
+            OnSuccess and re-execute method if retry
+            </summary>
+        </member>
+        <member name="F:Rougamo.Feature.Retry">
+            <summary>
+            ExceptionRetry or SuccessRetry
+            </summary>
+        </member>
+        <member name="F:Rougamo.Feature.ExceptionHandle">
+            <summary>
+            OnException and return with handled value
+            </summary>
+        </member>
+        <member name="F:Rougamo.Feature.SuccessReplace">
+            <summary>
+            OnSuccess and return replaced value
+            </summary>
+        </member>
+        <member name="F:Rougamo.Feature.Observe">
+            <summary>
+            OnEntry, OnException, OnSuccess and OnExit
+            </summary>
+        </member>
+        <member name="F:Rougamo.Feature.NonRewriteArgs">
+            <summary>
+            Except Rewrite Arguments
+            </summary>
+        </member>
+        <member name="F:Rougamo.Feature.NonRetry">
+            <summary>
+            Except Retry
+            </summary>
+        </member>
+        <member name="F:Rougamo.Feature.All">
+            <summary>
+            all features(default)
+            </summary>
+        </member>
+        <member name="T:Rougamo.IgnoreMoAttribute">
+            <summary>
+            A marked type or method will ignore code weaving.
+            </summary>
+        </member>
+        <member name="P:Rougamo.IgnoreMoAttribute.MoTypes">
+            <summary>
+            Ignore the specified weaving type that implements the <see cref="T:Rougamo.IMo"/> interface, ignore all if not passed in.
+            </summary>
+        </member>
+        <member name="T:Rougamo.IMo">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:Rougamo.IMo.Flags">
+            <summary>
+            Weavable method type, this attribute has no effect when applied at the method level.
+            </summary>
+        </member>
+        <member name="P:Rougamo.IMo.Pattern">
+            <summary>
+            Method matched with this pattern will be weaving. This attribute has no effect when applied at the method level. It has a higher priority than <see cref="P:Rougamo.IMo.Flags"/>
+            </summary>
+        </member>
+        <member name="P:Rougamo.IMo.Features">
+            <summary>
+            Which features will be weaving.
+            </summary>
+        </member>
+        <member name="P:Rougamo.IMo.Order">
+            <summary>
+            Execution order.
+            </summary>
+        </member>
+        <member name="M:Rougamo.IMo.OnEntry(Rougamo.Context.MethodContext)">
+            <summary>
+            Before the method executing.
+            </summary>
+        </member>
+        <member name="M:Rougamo.IMo.OnSuccess(Rougamo.Context.MethodContext)">
+            <summary>
+            After the method executes successfully
+            </summary>
+        </member>
+        <member name="M:Rougamo.IMo.OnException(Rougamo.Context.MethodContext)">
+            <summary>
+            When an exception occurs when the method is executed.
+            </summary>
+        </member>
+        <member name="M:Rougamo.IMo.OnExit(Rougamo.Context.MethodContext)">
+            <summary>
+            After the method is executed, whether it succeeds or an exception occurs.
+            </summary>
+        </member>
+        <member name="T:Rougamo.IRougamo`1">
+            <summary>
+            For types that implement this interface, use <typeparamref name="T"/> for code weaving.
+            </summary>
+            <typeparam name="T">The type implements <see cref="T:Rougamo.IMo"/>.</typeparam>
+        </member>
+        <member name="T:Rougamo.IRougamo`2">
+            <summary>
+            For types that implement this interface, use <typeparamref name="TMo"/> for code weaving.
+            </summary>
+            <typeparam name="TMo">The type implements <see cref="T:Rougamo.IMo"/>.</typeparam>
+            <typeparam name="TRepulsion">
+            The type implements <see cref="T:Rougamo.IMo"/>, mutually exclusive with <typeparamref name="TMo"/>, 
+            only one takes effect at the same time according to the priority relationship.
+            </typeparam>
+        </member>
+        <member name="T:Rougamo.IRepulsionsRougamo`2">
+            <summary>
+            For types that implement this interface, use <typeparamref name="TMo"/> for code weaving.
+            </summary>
+            <typeparam name="TMo">The type implements <see cref="T:Rougamo.IMo"/>.</typeparam>
+            <typeparam name="TRepulsion">
+            The type implements <see cref="T:Rougamo.MoRepulsion"/>, its <see cref="P:Rougamo.MoRepulsion.Repulsions"/> defines
+            multiple mutually exclusive types with <typeparamref name="TMo"/>, and only one takes effect at
+            the same time according to the priority relationship.
+            </typeparam>
+        </member>
+        <member name="T:Rougamo.MoAttribute">
+            <inheritdoc/>
+        </member>
+        <member name="P:Rougamo.MoAttribute.Flags">
+            <inheritdoc/>
+        </member>
+        <member name="P:Rougamo.MoAttribute.Pattern">
+            <inheritdoc/>
+        </member>
+        <member name="P:Rougamo.MoAttribute.Features">
+            <inheritdoc/>
+        </member>
+        <member name="P:Rougamo.MoAttribute.Order">
+            <inheritdoc/>
+        </member>
+        <member name="M:Rougamo.MoAttribute.OnEntry(Rougamo.Context.MethodContext)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Rougamo.MoAttribute.OnException(Rougamo.Context.MethodContext)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Rougamo.MoAttribute.OnExit(Rougamo.Context.MethodContext)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Rougamo.MoAttribute.OnSuccess(Rougamo.Context.MethodContext)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Rougamo.MoProxyAttribute">
+            <summary>
+            Weaving using an existing Attribute as the proxy type.
+            </summary>
+        </member>
+        <member name="M:Rougamo.MoProxyAttribute.#ctor(System.Type,System.Type)">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:Rougamo.MoProxyAttribute.OriginAttributeType">
+            <summary>
+            Attribute type being proxied.
+            </summary>
+        </member>
+        <member name="P:Rougamo.MoProxyAttribute.MoAttribtueType">
+            <summary>
+            Proxy Attribute inherited from <see cref="T:Rougamo.MoAttribute"/>.
+            </summary>
+        </member>
+        <member name="T:Rougamo.MoRepulsion">
+            <summary>
+            Multiple mutex types, used with <see cref="T:Rougamo.IRepulsionsRougamo`2"/>.
+            </summary>
+        </member>
+        <member name="P:Rougamo.MoRepulsion.Repulsions">
+            <summary>
+            The type must implements <see cref="T:Rougamo.IMo"/>, and when implementing this class,
+            the field must be initialized once and cannot contain logic processing.
+            </summary>
+            <example>
+            Repulsions = new [] { typeof(Abc), typeof(Bcd) };
+            </example>
+        </member>
+        <member name="T:System.Reflection.PublicReflectionExtensions">
+            <summary>
+            Relection extensions
+            </summary>
+        </member>
+        <member name="M:System.Reflection.PublicReflectionExtensions.IsProperty(System.Reflection.MethodInfo)">
+            <summary>
+            <paramref name="method"/> is property getter method or setter method
+            </summary>
+        </member>
+        <member name="M:System.Reflection.PublicReflectionExtensions.IsPropertyGetter(System.Reflection.MethodInfo)">
+            <summary>
+            <paramref name="method"/> is property getter method
+            </summary>
+        </member>
+        <member name="M:System.Reflection.PublicReflectionExtensions.IsPropertySetter(System.Reflection.MethodInfo)">
+            <summary>
+            <paramref name="method"/> is property setter method
+            </summary>
+        </member>
+    </members>
+</doc>
